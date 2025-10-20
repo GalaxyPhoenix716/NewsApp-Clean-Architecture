@@ -1,5 +1,5 @@
 import 'package:clean_arch/features/daily_news/data/data_sources/remote/news_api_service.dart';
-import 'package:clean_arch/features/daily_news/data/repositories/article_reppsitory_impl.dart';
+import 'package:clean_arch/features/daily_news/data/repositories/article_repository_impl.dart';
 import 'package:clean_arch/features/daily_news/domain/repositories/article_repository.dart';
 import 'package:clean_arch/features/daily_news/domain/usecases/get_article.dart';
 import 'package:clean_arch/features/daily_news/presentation/bloc/article/remote/remote_article_bloc.dart';
@@ -15,7 +15,7 @@ Future<void> initializeDependencies() async {
   //Dependencies
   sl.registerSingleton<NewsApiService>(NewsApiService(sl()));
 
-  sl.registerSingleton<ArticleRepository>(ArticleReppsitoryImpl(sl()));
+  sl.registerSingleton<ArticleRepository>(ArticleRepositoryImpl(sl()));
 
   sl.registerSingleton<GetArticleUseCase>(GetArticleUseCase(sl()));
 

@@ -2,7 +2,6 @@ import 'package:clean_arch/features/daily_news/domain/entities/article.dart';
 
 class ArticleModel extends ArticleEntity {
   const ArticleModel({
-    int? id,
     String? author,
     String? title,
     String? description,
@@ -12,9 +11,8 @@ class ArticleModel extends ArticleEntity {
     String? content,
   });
 
-  factory ArticleModel.fromMap(Map<String, dynamic> map) {
+  factory ArticleModel.fromJson(Map<String, dynamic> map) {
     return ArticleModel(
-      id: map['id'] ?? "",
       author: map['author'] ?? "",
       title: map['title'] ?? "",
       description: map['description'] ?? "",
@@ -22,6 +20,32 @@ class ArticleModel extends ArticleEntity {
       urlToImage: map['urlToImage'] ?? "",
       publishedAt: map['publishedAt'] ?? "",
       content: map['content'] ?? "",
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'author': author,
+      'title': title,
+      'description': description,
+      'url': url,
+      'urlToImage': urlToImage,
+      'publishedAt': publishedAt,
+      'content': content,
+    };
+  }
+}
+
+class ArticleResponse {
+  final List<ArticleModel> articles;
+
+  const ArticleResponse({required this.articles});
+
+  factory ArticleResponse.fromJson(Map<String, dynamic> map) {
+    return ArticleResponse(
+      articles: (map['articles'] as List)
+          .map((i) => ArticleModel.fromJson(i))
+          .toList(),
     );
   }
 }

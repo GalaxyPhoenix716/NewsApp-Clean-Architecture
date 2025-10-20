@@ -1,5 +1,6 @@
 import 'package:clean_arch/core/resources/data_state.dart';
+import 'package:clean_arch/features/daily_news/data/models/article.dart';
 
 abstract class ArticleRepository {
-  Future<DataState> getNewsArticles();
+  Future<DataState<List<ArticleModel>>> getNewsArticles();
 }
